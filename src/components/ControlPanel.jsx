@@ -1,16 +1,11 @@
 import React from 'react';
-import { Award, Calendar, FileDown, Printer, RotateCcw, CheckCircle, Shield } from 'lucide-react';
-import SignatureUploader from './SignatureUploader';
+import { Award, FileDown, Printer, RotateCcw, CheckCircle } from 'lucide-react';
 
 export default function ControlPanel({
   learnerName,
   setLearnerName,
   courseDate,
   setCourseDate,
-  signature,
-  originalSignature,
-  setSignature,
-  setOriginalSignature,
   onGenerate,
   onDownloadPdf,
   onPrint,
@@ -62,21 +57,7 @@ export default function ControlPanel({
         </div>
       </div>
 
-      {/* Section 2: Signature Section */}
-      <div className="form-section" id="sec-signature">
-        <h2 className="section-title" id="title-signature">
-          <Shield size={16} style={{ color: 'var(--brand-blue)' }} />
-          Signature Settings
-        </h2>
-        <SignatureUploader
-          signature={signature}
-          originalSignature={originalSignature}
-          setSignature={setSignature}
-          setOriginalSignature={setOriginalSignature}
-        />
-      </div>
-
-      {/* Section 3: Actions */}
+      {/* Section 2: Actions */}
       <div className="form-section" style={{ borderBottom: 'none' }} id="sec-actions">
         <h2 className="section-title" id="title-actions">Actions</h2>
         

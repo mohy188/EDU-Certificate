@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <!-- Fully customized vector tracing of the user's attached signature -->
+  <g id="user-signature" transform="translate(40, 30)">
+    <!-- Main Left-hand bubble/loop -->
+    <path d="M 180,435 
+             C 100,405 90,465 105,490 
+             C 125,525 210,515 235,475 
+             C 255,440 215,410 180,435 Z" 
+          fill="none" stroke="#111111" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Center vertical slash -->
+    <path d="M 185,370 Q 188,485 195,600" 
+          fill="none" stroke="#111111" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Upward cursive flow connecting to middle letters -->
+    <path d="M 195,600 
+             C 205,530 250,445 268,360 
+             C 275,325 285,325 282,365 
+             C 275,460 282,490 295,480 
+             C 310,470 325,410 338,365 
+             C 345,340 355,340 353,380 
+             C 350,450 340,490 355,480" 
+          fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Right-hand tall vertical loop -->
+    <path d="M 355,480 
+             C 365,470 385,350 395,330 
+             C 405,310 420,310 415,340 
+             C 405,405 385,475 375,490" 
+          fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Sharp horizontal accent line/dash under the tall loop -->
+    <path d="M 380,500 L 420,495" 
+          fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

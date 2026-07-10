@@ -9,8 +9,6 @@ export default function App() {
   // State variables matching objective
   const [learnerName, setLearnerName] = useState('JOHN SMITH');
   const [courseDate, setCourseDate] = useState('2023-05-24'); // Match sample date
-  const [signature, setSignature] = useState(null);
-  const [originalSignature, setOriginalSignature] = useState(null);
   
   // Custom interactive helper states
   const [scale, setScale] = useState(0.75); // Fits well in default UI
@@ -62,8 +60,6 @@ export default function App() {
   const handleReset = () => {
     setLearnerName('JOHN SMITH');
     setCourseDate('2023-05-24');
-    setSignature(null);
-    setOriginalSignature(null);
     setScale(0.75);
     triggerToast('Form has been reset to defaults.');
   };
@@ -76,10 +72,6 @@ export default function App() {
         setLearnerName={setLearnerName}
         courseDate={courseDate}
         setCourseDate={setCourseDate}
-        signature={signature}
-        originalSignature={originalSignature}
-        setSignature={setSignature}
-        setOriginalSignature={setOriginalSignature}
         onGenerate={handleGenerate}
         onDownloadPdf={handleDownloadPdf}
         onPrint={handlePrint}
@@ -101,7 +93,6 @@ export default function App() {
             ref={certificateRef}
             learnerName={learnerName}
             courseDate={courseDate}
-            signature={signature}
           />
         </div>
 

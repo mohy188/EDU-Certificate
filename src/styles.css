@@ -569,8 +569,11 @@ body {
 .signature-drag-area {
   position: relative;
   width: 100%;
-  height: 70px; /* Constrained vertical height track */
+  height: 135px; /* Enlarged vertical height track for a bold signature */
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Interactive Signature Rnd wrapper */
@@ -592,6 +595,21 @@ body {
   object-fit: contain;
   pointer-events: none; /* Let drag drop handle clicks */
   mix-blend-mode: multiply; /* Removes any remaining signature background instantly */
+}
+
+.static-signature-img {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 340px; /* Significantly increased max-width to allow a large, prominent signature */
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.static-signature-svg {
+  display: block;
+  width: 147px;
+  height: 135px;
 }
 
 /* Styled fallback cursive handwriting when no image is uploaded */

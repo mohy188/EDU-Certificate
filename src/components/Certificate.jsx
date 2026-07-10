@@ -1,19 +1,9 @@
 import React, { forwardRef, useState, useEffect } from 'react';
-import { Rnd } from 'react-rnd';
 import { formatUKDate } from '../utils/helpers';
 import { makeWhiteTransparent } from '../utils/backgroundRemoval';
 
-const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => {
-  // Signature interactive state (width, height, relative coordinates)
-  // Perfectly centered inside the signature-drag-area track
-  const [sigState, setSigState] = useState({
-    width: 200,
-    height: 75,
-    x: 232, // (664px track width - 200px sig width) / 2 = 232px to center
-    y: 0    // (75px track height - 75px sig height) / 2 = 0px to center
-  });
-
-  // Dynamic processed transparent logos state
+const Certificate = forwardRef(({ learnerName, courseDate }, ref) => {
+  // Dynamic processed transparent logo state
   const [processedLogo, setProcessedLogo] = useState('/logo.png');
 
   useEffect(() => {
@@ -115,40 +105,41 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
         </div>
       </div>
 
-      {/* Signature & Line Section - Track bounded to prevent overlapping */}
+      {/* Signature & Line Section - Statically centered */}
       <div className="signature-section" id="signature-block">
         <div className="signature-label" id="signature-heading">Signed By :</div>
         
-        {/* Track container to restrict dragging vertically, preventing labels overlap */}
         <div className="signature-drag-area" id="signature-drag-area">
-          {signature ? (
-            <Rnd
-              size={{ width: sigState.width, height: sigState.height }}
-              position={{ x: sigState.x, y: sigState.y }}
-              onDragStop={(e, d) => {
-                setSigState(prev => ({ ...prev, x: d.x, y: d.y }));
-              }}
-              onResizeStop={(e, direction, ref, delta, position) => {
-                setSigState({
-                  width: parseInt(ref.style.width),
-                  height: parseInt(ref.style.height),
-                  ...position
-                });
-              }}
-              bounds="parent"
-              lockAspectRatio={true}
-              className="interactive-sig-wrapper"
-              id="rnd-signature-container"
-            >
-              <img 
-                src={signature} 
-                alt="Director Signature" 
-                className="interactive-sig-img"
-                referrerPolicy="no-referrer"
-                id="sig-img-on-cert"
-              />
-            </Rnd>
-          ) : null}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="80 290 360 330" 
+            width="147"
+            height="135"
+            className="static-signature-svg"
+            id="sig-svg-on-cert"
+          >
+            <g id="user-signature">
+              {/* Main Left-hand bubble/loop */}
+              <path d="M 180,435 C 100,405 90,465 105,490 C 125,525 210,515 235,475 C 255,440 215,410 180,435 Z" 
+                    fill="none" stroke="#111111" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
+
+              {/* Center vertical slash */}
+              <path d="M 185,370 Q 188,485 195,600" 
+                    fill="none" stroke="#111111" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
+
+              {/* Upward cursive flow connecting to middle letters */}
+              <path d="M 195,600 C 205,530 250,445 268,360 C 275,325 285,325 282,365 C 275,460 282,490 295,480 C 310,470 325,410 338,365 C 345,340 355,340 353,380 C 350,450 340,490 355,480" 
+                    fill="none" stroke="#111111" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+
+              {/* Right-hand tall vertical loop */}
+              <path d="M 355,480 C 365,470 385,350 395,330 C 405,310 420,310 415,340 C 405,405 385,475 375,490" 
+                    fill="none" stroke="#111111" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+
+              {/* Sharp horizontal accent line/dash under the tall loop */}
+              <path d="M 380,500 L 420,495" 
+                    fill="none" stroke="#111111" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            </g>
+          </svg>
         </div>
 
         <div className="signature-line-group" id="signature-line-box">
