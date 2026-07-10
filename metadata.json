@@ -1,0 +1,6 @@
+{
+  "name": "Certificate Generator",
+  "description": "Professional single-page Certificate Generator for EDU Training Centre Ltd with editable learner name, course date, and signature upload.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

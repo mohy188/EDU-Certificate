@@ -1,0 +1,873 @@
+/* 
+ * Certificate Generator CSS3 Stylesheet
+ * Custom styles for EDU Training Centre Ltd branding
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* EDU Training Centre Brand Colors */
+  --brand-blue: #0077c8;
+  --brand-red: #e31837;
+  --brand-black: #1a1a1a;
+  
+  /* UI Colors */
+  --bg-main: #f3f4f6;
+  --bg-sidebar: #ffffff;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --border-color: #e2e8f0;
+  --focus-ring: rgba(0, 119, 200, 0.25);
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Container Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Sidebar Control Panel */
+.control-panel {
+  width: 400px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.panel-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.panel-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-black);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-header p {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* Form Groups & Controls */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-input {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Dropzone Upload */
+.dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropzone:hover, .dropzone.active {
+  border-color: var(--brand-blue);
+  background-color: rgba(0, 119, 200, 0.02);
+}
+
+.dropzone-icon {
+  color: var(--brand-blue);
+}
+
+.dropzone p {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.dropzone-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Signature Panel & Tools */
+.signature-preview-container {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.signature-thumbnail {
+  max-height: 80px;
+  max-width: 100%;
+  object-fit: contain;
+  background-color: #f8fafc;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.signature-tools {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.tool-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tool-btn {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--border-color);
+  background-color: #ffffff;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.tool-btn:hover {
+  background-color: #f1f5f9;
+}
+
+.tool-btn.primary {
+  background-color: var(--brand-blue);
+  color: white;
+  border-color: var(--brand-blue);
+}
+
+.tool-btn.primary:hover {
+  background-color: #005fa0;
+}
+
+.tool-btn.danger {
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.tool-btn.danger:hover {
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+/* Action Buttons Group */
+.action-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-action {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+}
+
+.btn-action.generate {
+  background-color: var(--brand-blue);
+  color: white;
+}
+
+.btn-action.generate:hover {
+  background-color: #0060a3;
+  transform: translateY(-1px);
+}
+
+.btn-action.pdf {
+  background-color: var(--brand-red);
+  color: white;
+}
+
+.btn-action.pdf:hover {
+  background-color: #c7122e;
+  transform: translateY(-1px);
+}
+
+.btn-action.print {
+  background-color: #475569;
+  color: white;
+}
+
+.btn-action.print:hover {
+  background-color: #334155;
+  transform: translateY(-1px);
+}
+
+.btn-action.reset {
+  background-color: white;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+}
+
+.btn-action.reset:hover {
+  background-color: #f8fafc;
+  color: var(--text-dark);
+}
+
+/* Certificate Preview Main Area */
+.certificate-view-area {
+  flex-grow: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  position: relative;
+  height: 100vh;
+}
+
+.zoom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* The exact A4 Certificate Sheet */
+.certificate-canvas {
+  width: 794px; /* A4 Portrait in 96 DPI */
+  height: 1123px;
+  min-width: 794px;
+  min-height: 1123px;
+  background-color: #f4f6fc; /* Elegant pale lavender-blue from target certificate */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 65px; /* Elegant symmetrical padding, beautifully spacing content across the page */
+  font-family: 'Lora', Georgia, serif;
+  color: #1a1a1a;
+  border: 1px solid #d1d5db;
+}
+
+/* Elegant Diagonal Corner Decorations (Matching PDF screenshot exactly) */
+.decor-top-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 18px;
+  background-color: #1a365d; /* Dark Navy Blue */
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  z-index: 5;
+}
+
+.decor-left-teal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 140px;
+  background-color: var(--brand-red); /* Changed from green/teal to red to match logo */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  z-index: 5;
+}
+
+.decor-bottom-teal {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: 18px;
+  background-color: var(--brand-red); /* Changed from green/teal to red to match logo */
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 5;
+}
+
+.decor-right-blue {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 140px;
+  background-color: #1a365d; /* Dark Navy Blue */
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  z-index: 5;
+}
+
+/* Certificate Content Sections */
+.certificate-header {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.edu-logo-img {
+  height: 135px; /* Large, clear, and perfectly proportioned */
+  max-width: 420px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.provider-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px; /* Elegant and premium visibility */
+  font-weight: 700;
+  color: var(--brand-red); /* Using the brand red in large spaced-out letters */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Centered Certification Bar */
+.certify-bar-container {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.certify-bar {
+  background-color: #1a365d; /* Deep Dark Navy bar matching the corners */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; /* Perfectly sized and legible */
+  font-weight: 700;
+  padding: 8px 75px; /* Elegant padding for larger logos and spacious layout */
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 1px;
+}
+
+/* Learner Name Section */
+.learner-section {
+  text-align: center;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.learner-name {
+  font-size: 46px; /* Elegant prominent name font size */
+  font-weight: 700;
+  color: var(--brand-red);
+  font-family: 'Lora', Georgia, serif;
+  letter-spacing: 0.05em;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.learner-divider-line {
+  width: 480px; /* Perfectly sized divider line to match the text */
+  height: 2px;
+  background-color: #cbd5e1;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+/* Main Text Section with clear non-overlapping blocks */
+.certificate-body-text {
+  text-align: center;
+  font-size: 15px; /* Optimally sized body text */
+  line-height: 1.5; /* Beautiful line-height */
+  color: #1e293b;
+  max-width: 660px;
+  margin: 0 auto;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Perfectly balanced gaps to avoid vertical overflow */
+}
+
+.body-lead-text {
+  color: #475569;
+  font-size: 15.5px;
+}
+
+.body-middle-text {
+  color: #475569;
+  font-size: 15.5px;
+  margin-top: 2px;
+}
+
+.regulations-bold {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.course-title-highlight {
+  font-family: 'Inter', sans-serif;
+  font-size: 21px; /* Highly visible bold highlight */
+  font-weight: 800;
+  color: var(--brand-blue);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 4px 0;
+  line-height: 1.35;
+}
+
+.guidelines-italic {
+  font-size: 12.5px;
+  font-style: italic;
+  color: #64748b;
+}
+
+/* Course Date Section */
+.date-section {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.date-text {
+  font-size: 15.5px;
+  color: #334155;
+}
+
+.date-value {
+  font-weight: 700;
+  color: var(--brand-red);
+  border-bottom: 2px solid var(--brand-red);
+  padding: 1px 16px;
+  font-size: 16.5px;
+}
+
+/* Validity Section - Clean plain text as requested with no background, no borders, no brackets */
+.validity-section {
+  text-align: center;
+  margin: 10px auto;
+  max-width: 560px;
+}
+
+.validity-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.validity-recommendation {
+  font-size: 11.5px;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Signature & Line Section - Track-bounded with zero overlapping */
+.signature-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px auto 6px auto;
+  width: 100%;
+}
+
+.signature-label {
+  font-size: 13.5px;
+  color: #475569;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* Drag area restricts dragging within safe bounds and prevents label overlaps */
+.signature-drag-area {
+  position: relative;
+  width: 100%;
+  height: 70px; /* Constrained vertical height track */
+  margin-bottom: 4px;
+}
+
+/* Interactive Signature Rnd wrapper */
+.interactive-sig-wrapper {
+  position: absolute !important;
+  border: 1px dashed transparent;
+  cursor: move;
+  z-index: 10;
+}
+
+.interactive-sig-wrapper:hover {
+  border-color: var(--brand-blue);
+  background-color: rgba(0, 119, 200, 0.08);
+}
+
+.interactive-sig-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none; /* Let drag drop handle clicks */
+  mix-blend-mode: multiply; /* Removes any remaining signature background instantly */
+}
+
+/* Styled fallback cursive handwriting when no image is uploaded */
+.signature-cursive-placeholder {
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 80px);
+  width: 160px;
+  text-align: center;
+  font-family: "Caveat", "Brush Script MT", cursive;
+  font-size: 28px;
+  color: #1a365d;
+  opacity: 0.85;
+  pointer-events: none;
+  transform: rotate(-3deg);
+  letter-spacing: 1px;
+}
+
+.signature-line-group {
+  width: 280px;
+  border-top: 1.5px solid #94a3b8;
+  padding-top: 4px;
+  text-align: center;
+}
+
+.signer-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brand-red);
+}
+
+.signer-title {
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Approval Footer Section */
+.approval-section {
+  border-top: 1.5px solid #cbd5e1;
+  padding-top: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.approval-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.licence-box {
+  font-size: 13px;
+  color: #374151;
+}
+
+.licence-number {
+  color: var(--brand-red);
+  font-weight: 700;
+}
+
+.approval-system-text {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.4;
+  max-width: 660px;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.faib-logo-img {
+  height: 160px; /* ENLARGED 5X MORE AS REQUESTED! (Original was 32px, 32px * 5 = 160px) */
+  max-width: 480px; /* Fully expanded size! */
+  object-fit: contain;
+  margin-top: 8px;
+}
+
+/* Zoom Controls UI in Sidebar */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+  font-size: 13px;
+}
+
+.zoom-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.zoom-btn {
+  background: #f1f5f9;
+  border: none;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.zoom-btn:hover {
+  background: var(--border-color);
+}
+
+/* Draggable instruction helper banner */
+.drag-helper-banner {
+  background-color: rgba(227, 24, 55, 0.05);
+  border: 1px solid rgba(227, 24, 55, 0.15);
+  color: var(--brand-red);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -8px;
+}
+
+/* Loading Overlay for PDF generation */
+.pdf-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 119, 200, 0.15);
+  border-left-color: var(--brand-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive styles to scale down certificate in smaller viewport widths */
+@media (max-width: 1250px) {
+  .zoom-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .control-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    height: auto;
+    max-height: 500px;
+  }
+  .certificate-view-area {
+    height: auto;
+    overflow: visible;
+    padding: 20px 0;
+  }
+  .zoom-container {
+    transform: scale(0.65);
+    margin: -150px 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .zoom-container {
+    transform: scale(0.45);
+    margin: -250px 0;
+  }
+}
+
+/* 
+ * PRISTINE PRINT MEDIA STYLES
+ * Overrides everything during window.print() to print ONLY the certificate perfectly.
+ */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    overflow: hidden !important;
+  }
+
+  .app-container {
+    display: block !important;
+    min-height: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: none !important;
+  }
+
+  /* Hide the entire Control Panel/Sidebar */
+  .control-panel {
+    display: none !important;
+  }
+
+  /* Isolate certificate preview area */
+  .certificate-view-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+    height: 100% !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .zoom-container {
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+  }
+
+  /* Force exact A4 Portrait print dimensions for sheet */
+  .certificate-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    min-width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #f4f6fc !important; /* Matches the exact pale-blue layout of target */
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    padding: 15mm 18mm !important; /* Elegant mm borders for print */
+  }
+
+  /* Support exact corner diagonal shapes in print */
+  .decor-top-blue, .decor-left-teal, .decor-bottom-teal, .decor-right-blue {
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
