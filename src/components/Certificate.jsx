@@ -20,14 +20,14 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
   useEffect(() => {
     let active = true;
 
-    // Process top logo to remove white background cleanly for beautiful PDF quality
+    // Process top logo to remove white background cleanly
     makeWhiteTransparent('/logo.png', 240)
       .then(url => {
         if (active) setProcessedLogo(url);
       })
       .catch(err => console.error("Error pre-processing top logo:", err));
 
-    // Process bottom logo to remove white background cleanly for beautiful PDF quality
+    // Process bottom logo to remove white background cleanly
     makeWhiteTransparent('/faib.png', 240)
       .then(url => {
         if (active) setProcessedFaib(url);
@@ -156,12 +156,7 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
                 id="sig-img-on-cert"
               />
             </Rnd>
-          ) : (
-            /* Cursive fallback placeholder if no file is uploaded */
-            <div className="signature-cursive-placeholder" id="sig-placeholder-cursive">
-              Fahad Mahmand
-            </div>
-          )}
+          ) : null}
         </div>
 
         <div className="signature-line-group" id="signature-line-box">

@@ -150,9 +150,10 @@ export async function removeBackgroundAI(imageSrc, threshold = 185) {
  * This preserves interior white shapes (like the curve inside the FAIB cross) while removing outer background.
  * @param {string} imageSrc - Base64 or URL of the source image
  * @param {number} tolerance - Tolerance range (0-255) where 255 is pure white
+ * @param {boolean} keepCenterWhite - If true, avoids making white pixels near the center transparent
  * @returns {Promise<string>} - Promise resolving to a base64 encoded PNG
  */
-export async function makeWhiteTransparent(imageSrc, tolerance = 215) {
+export async function makeWhiteTransparent(imageSrc, tolerance = 215, keepCenterWhite = false) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -172,12 +173,64 @@ export async function makeWhiteTransparent(imageSrc, tolerance = 215) {
       const queue = [];
       const visited = new Uint8Array(width * height); // 0: unvisited, 1: background, 2: visited non-bg
       
+      const isSandwiched = (px, py) => {
+        // Only run for FAIB cross region to save performance
+        if (px < 90 || px > 420 || py < 340 || py > 680) return false;
+        
+        let foundTeal = false;
+        let foundPurple = false;
+        
+        const directions = [
+          { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -1, y: 0 }, { x: 1, y: 0 },
+          { x: -1, y: -1 }, { x: 1, y: -1 }, { x: -1, y: 1 }, { x: 1, y: 1 }
+        ];
+        const steps = [4, 8, 12, 16, 20, 24];
+        
+        for (const d of directions) {
+          for (const step of steps) {
+            const nx = px + d.x * step;
+            const ny = py + d.y * step;
+            if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+              const nidx = (ny * width + nx) * 4;
+              const nr = data[nidx];
+              const ng = data[nidx + 1];
+              const nb = data[nidx + 2];
+              const na = data[nidx + 3];
+              
+              if (na > 0) {
+                // Teal check (G channel is highest, or green-ish)
+                if (ng > nr + 15 && ng > nb + 10 && ng > 40) {
+                  foundTeal = true;
+                }
+                // Purple/Blue check (B channel is highest, or blue-ish)
+                if (nb > nr + 15 && nb > ng + 10 && nb > 40) {
+                  foundPurple = true;
+                }
+              }
+            }
+            if (foundTeal && foundPurple) return true;
+          }
+        }
+        return false;
+      };
+
       const isWhitePixel = (idx) => {
         const r = data[idx];
         const g = data[idx + 1];
         const b = data[idx + 2];
         const a = data[idx + 3];
         if (a === 0) return false;
+        
+        const pixelPos = idx / 4;
+        const px = pixelPos % width;
+        const py = Math.floor(pixelPos / width);
+        
+        // If keepCenterWhite is true or it's the FAIB logo, check if the pixel is part of the white wave of the FAIB cross.
+        if (keepCenterWhite || imageSrc.includes('faib')) {
+          if (isSandwiched(px, py)) {
+            return false;
+          }
+        }
         
         const brightness = (r + g + b) / 3;
         const maxCh = Math.max(r, g, b);
