@@ -15,7 +15,6 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
 
   // Dynamic processed transparent logos state
   const [processedLogo, setProcessedLogo] = useState('/logo.png');
-  const [processedFaib, setProcessedFaib] = useState('/faib.png');
 
   useEffect(() => {
     let active = true;
@@ -26,13 +25,6 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
         if (active) setProcessedLogo(url);
       })
       .catch(err => console.error("Error pre-processing top logo:", err));
-
-    // Process bottom logo to remove white background cleanly
-    makeWhiteTransparent('/faib.png', 240)
-      .then(url => {
-        if (active) setProcessedFaib(url);
-      })
-      .catch(err => console.error("Error pre-processing FAIB logo:", err));
 
     return () => {
       active = false;
@@ -176,13 +168,6 @@ const Certificate = forwardRef(({ learnerName, courseDate, signature }, ref) => 
         <div className="approval-system-text" id="approval-legal-txt">
           "The Quality Management system at FAIB holds 3rd Party Certification via a United Kingdom Accreditation Service (UKAS) Accredited Certification Body".
         </div>
-        <img 
-          src={processedFaib} 
-          alt="FAIB Regulatory Body Logo" 
-          className="faib-logo-img"
-          referrerPolicy="no-referrer"
-          id="faib-logo"
-        />
       </div>
     </div>
   );
